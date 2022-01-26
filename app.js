@@ -3,9 +3,12 @@ const jokes = document.querySelector('#jokes');
 const button = document.querySelector('button');
 
 const getDadJoke = async () => {
-    const config = {headers: { Accept: 'application/json'} }; // API requirement to add this code 
+    try { const config = {headers: { Accept: 'application/json'} }; // API requirement to add this code 
     const res = await axios.get('https://icanhazdadjoke.com/', config)
     return res.data.joke;
+    } catch (e) {
+        return "NO JOKES AVAILABLE! SORRY :("
+    }
 }
 
 
